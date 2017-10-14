@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="{{url_for('static', filename='js/counter.js')}}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/counter.css')}}">
+    <title>Counter Assignment</title>
+</head>
+<body>
+    <div >
+        <div >
+            <div class="count">
+            <h1>Counter Number =  {{session['counter']}}</h1>
+            
+            </div>
+            <div class="pic">
+                <img src="static/images/counter.jpeg" alt="no pick holmes">
+            </div>
+            <div class="vid">
+            <iframe src="https://www.youtube.com/embed/qNhgl1tN5vU" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

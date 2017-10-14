@@ -1,0 +1,16 @@
+iframe{
+height: 40%;
+width:40%;
+outline:red 5px solid;
+outline-offset: 10px;
+
+}
+
+.pic{
+    margin:20px;
+    display:block
+}
+.vid{
+    margin:20px;
+    display: block
+}

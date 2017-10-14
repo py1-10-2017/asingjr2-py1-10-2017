@@ -1,0 +1,32 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/number_game.css')}}">
+        <script type="text/javascript" src="{{url_for('static', filename='js/number_game.js')}}"></script>
+    
+    </head>
+    <body>
+        <div class=" container wrapper">
+            <div>
+            <h1>Welcome to the Great Number Game</h1>
+            <h3>I am thinking of a number between 1 and 100</h3>
+            <h3>Take a guess!</h3>
+            </div>
+            <div>
+                <form action="/results" method="post">
+                    <div class=" row  justify-content-center form-group">
+                        <input type="text" name="guess" id="for_guess">
+                        <input type="hidden" name='hidden' value='submit'>
+                     </div>    
+                        <button name="submit" class="btn btn-warning btn-block" >SUBMIT</button>
+                   
+                </form>
+            </div> 
+        </div>   
+    </body>
+    </html>

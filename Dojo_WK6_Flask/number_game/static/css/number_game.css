@@ -1,0 +1,32 @@
+*{
+    margin:15px;
+}
+
+.wrapper{
+    outline:3px blue dotted;
+    height:auto;
+    width: 700px;
+    align-content: center;
+    margin:15px;
+    padding:10px
+
+}
+
+#for_guess{
+    height:100px;
+    width: 350px;
+    border:5px #C09C9C solid;
+    background-color:#C57886;
+    box-shadow: 5x 5px 10px #E43434;
+    align: center
+}
+
+button {
+    display: block;
+    height:50px;
+    color: black;
+    background-color: pink
+}
+h1, h3{
+    text-align:center
+}

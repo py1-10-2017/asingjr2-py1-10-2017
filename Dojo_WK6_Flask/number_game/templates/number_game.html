@@ -1,0 +1,69 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/number_game.css')}}">
+    <script type="text/javascript" src="{{url_for('static', filename='js/number_game.js')}}"></script>
+
+</head>
+<body>
+    <div class=" container wrapper">
+        <div>
+        <h1>Welcome to the Great Number Game</h1>
+        <h3>I am thinking of a number between 1 and 100</h3>
+        <h3>Take a guess!</h3>
+        </div>
+        <div>
+            <form action="/results" method="post">
+                <div class="row  justify-content-center form-group">
+                    <input type="text" name="guess" id="for_guess">
+                    <!--<input type="hidden" name='action' value='submit'>s-->
+                </div>    
+               <input type="submit" name="">                   
+            {% if session['result'] == 'low' %}
+            <h1>You Were Low</h1> 
+            {% elif session['result'] == 'high' %}
+            <h1>You Were High</h1>
+            {% elif session['result'] == 'perfect' %}
+            <h1>You're correct</h1>
+            <a href="/reset"><button>Play Again</button></a><!--Button and route back to index page with functions on session.pop(guess and target) keys.-->>
+            {% endif %}
+          </form>
+        </div> 
+    </div>   
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Great Number Game</title>
+</head>
+<body>
+    <h1>Great Number Game</h1>
+    <h4>Guess a Number between 1-100 ({{ session['target'] }})</h4>
+    <form action="/guess" method="post">
+        <input type="number" name="guess">
+        <input type="submit" value="Guess">
+    </form>
+    {{ session['result'] }}
+    {% if session['result'] == 'low' %}
+    <h1>You're Low</h1> 
+    {% elif session['result'] == 'high' %}
+    <h1>You're High</h1>
+    {% elif session['result'] == 'correct' %}
+    <h1>You're correct</h1>
+    <a href="/reset"><button>Play Again</button></a>
+    {% endif %}
+</body>
+</html>
+-->
