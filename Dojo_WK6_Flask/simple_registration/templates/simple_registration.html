@@ -1,0 +1,62 @@
+<!--
+    email
+    first_name
+    last_name
+    password
+    confirm_password
+
+Here are the validations you must include:
+
+    All fields are required and must not be blank
+    First and Last Name cannot contain any numbers
+    Password should be more than 8 characters
+    Email should be a valid email
+    Password and Password Confirmation should match
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='simple_registration.css')}}" >
+
+</head>
+<body>
+    <div class="container main">
+        <h1>BASIC FORM FOR COMPLETION WITH VALIDATION</h1>
+        
+        {% with messages = get_flashed_messages() %} <!-- Indents must line up -->
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/user" method="post">
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" name="email">
+        </div>
+        <div class="form-group">
+            <label for="">First Name</label>
+            <input type="text" name='first_name'>
+        </div>
+        <div class="form-group">
+            <label for="">Last Name</label>
+            <input type="text" name='last_name'>
+        </div>
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" name='password'>
+        </div>
+        <div class="form-group"> 
+            <label for="">Confirm Password</label>
+            <input type="password" name='confirm_password'>
+        </div>  
+            <input type="submit" name='' value="PLAY">
+         </div>  
+    </form>
+</body>
+</html>
