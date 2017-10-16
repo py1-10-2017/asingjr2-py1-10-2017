@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Turtles</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='turles.css')}}">
+</head>
+<body class="container main">
+    <h1>No Ninjas Here! </h1>
+    <h2>Please add "/picture/" + your favorite color to url</h2>
+ <!--
+    <form action="/result" method="post">
+    <input type="text" name="color">
+    <input type="submit" value="GET PICTURE">
+    </form>
+-->
+    <div class="pics">
+        <h3>Images results will be one of following..can you guess which will match your color?</h3>
+        <!--ALL PICTURES LOADED-->
+        <img  class='preview' src="static/leonardo.jpg" alt="leo">
+        <img class='preview' src="static/raphael.jpg" alt="raph">
+        <img class='preview' src="static/michelangelo.jpg" alt="micky">
+        <img class='preview' src="{{url_for('static', filename='donatello.jpg')}}" alt="don">
+        <img class='preview' src="static/notapril.jpg" alt="april">
+        <h4>If your favorite color is yellow your in luck!!!</h4>
+    </div>
+    <!--
+    {% if session['color'] == 'blue' %}
+        <img src="static/leonardo.jpg" alt="leo">
+    {% elif session['color'] == 'red' %}
+        <img src="static/raphael.jpg" alt="raph">
+    {% elif session['color'] == 'orange' %}
+        <img src="static/michelangelo.jpg" alt="micky">
+    {% elif session['color'] == 'purple' %}
+        <img src="{{url_for('static', filename='donatello.jpg')}}" alt="don">
+    {% elif session['color'] != 'red' or session['color'] != 'orange' or session['color'] != 'purple'       or session['color'] != 'blue'%}
+        <img src="static/notapril.jpg" alt="april">
+    {% endif %}
+    -->
+
+</body>
+</html>
+

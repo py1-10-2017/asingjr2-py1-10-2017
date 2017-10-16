@@ -1,0 +1,21 @@
+.preview{
+height:100px;
+width: 100px;
+outline-offset: 10px black solid;
+border: 2px red solid;
+margin-right:10px
+
+}
+main{
+    border: 5px solid orange;
+    background-image: url('pizza.jpg') /*need to practice*/
+}
+h2{
+    color:#3B3737;
+    text-shadow: 4px 10px #E6C8C8;
+}
+h4{
+    text-decoration: underline;
+    font-weight: bold;
+    color:violet
+}

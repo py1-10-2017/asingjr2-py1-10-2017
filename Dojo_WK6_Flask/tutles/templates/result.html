@@ -1,0 +1,12 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Picture Result</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename=character +'.jpg') }}" alt="{{character}}">
+        <!--Added character as defined in orignal py document to reference picture names with concatenation of 'jpg' or any other file types for images. "ALT" says character name.  List matches with dictionary defined in original py file.  "in" keyword only compares dicts.
+</body>
+</html>
