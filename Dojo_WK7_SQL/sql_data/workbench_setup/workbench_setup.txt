@@ -1,0 +1,16 @@
+twitter db Queries
+
+SELECT first_name as FIRST, tweet
+FROM users
+JOIN tweets
+ON tweets.user_id = user_id; 
+
+
+SELECT * 
+FROM faves;
+
+
+SELECT * 
+FROM follows
+JOIN users
+

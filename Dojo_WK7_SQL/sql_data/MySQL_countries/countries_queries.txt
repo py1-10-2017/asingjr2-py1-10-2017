@@ -1,0 +1,68 @@
+SELECT * 
+FROM languages;
+/*Question 1*/
+SELECT countries.name, languages.language, languages.percentage
+FROM countries
+JOIN  languages
+ON countries.id = languages.country_id
+WHERE languages.language = 'Slovene'
+ORDER BY languages.percentage DESC;
+
+SELECT *
+FROM cities;
+/*Question 2*/
+SELECT countries.name, count(cities.name)
+FROM cities
+JOIN countries 
+ON 
+cities.country_code= countries.code
+GROUP By countries.name
+ORDER BY count(cities.name) DESC;
+
+/*Question 3*/
+SELECT cities.name, cities.population
+FROM cities
+JOIN countries 
+ON cities.country_code= countries.code
+WHERE countries.name = 'MEXICO' 
+AND cities.population > 500000;
+
+/*Question 4*/
+SELECT countries.name, languages.percentage
+FROM countries
+JOIN  languages
+ON countries.id = languages.country_id
+WHERE languages.percentage > 89
+ORDER BY languages.percentage DESC;
+
+
+SELECT * 
+FROM countries;
+/*Question 5*/
+SELECT countries.name, countries.surface_area, countries.population
+FROM countries
+WHERE countries.surface_area < 501 
+AND countries.population < 100000
+ORDER BY countries.name;
+
+/*Question 6*/
+SELECT countries.name, countries.government_form, countries.life_expectancy, countries.capital
+FROM countries
+WHERE countries.capital > 200 
+AND countries.government_form = 'Constitutional Monarchy' 
+AND countries.life_expectancy > 75;
+
+/*Question 7*/
+SELECT cities.name, cities.population, countries.name, cities.district
+FROM cities
+JOIN countries 
+ON cities.country_code= countries.code
+WHERE cities.population > 500000;
+
+
+/*Question 8*/
+SELECT  countries.region,COUNT(countries.name)
+FROM countries
+GROUP BY countries.region
+ORDER BY COUNT(countries.name) DESC;
+
