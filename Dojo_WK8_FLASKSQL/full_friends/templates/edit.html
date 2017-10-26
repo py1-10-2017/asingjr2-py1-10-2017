@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>EDIT FRIEND</h1>
+
+</body>
+<fieldset>
+    <legend>Add Friends Form</legend>
+        <form action="/update_record" method="POST">
+            <label for="">First Name: </label>
+            <input type="text" name="first_name" value="{{ first }}">
+
+            <label for="">Last Name: </label>
+            <input type="text" name="last_name" value="">
+            <!--values do not update when posted for change-->
+            <label for="">Email: </label>
+            <input type="text" name="emails" value="  {{ emails }}">
+
+            <input type="submit" value="ADD FRIEND">
+        </form>
+    </fieldset>
+    
+</html>
+<!--
+VALUES DO NOT UPDATE
+-->

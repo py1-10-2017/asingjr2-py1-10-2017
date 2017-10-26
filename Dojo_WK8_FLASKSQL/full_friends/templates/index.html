@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Full Friends Display</title>
+</head>
+<body>
+    <h1>FULL FRIENDS</h1>
+    <ol>
+    {% for friend in all_friends: %}
+        <li>
+            {{'First Name = '}}{{friend['first_name']}} {{';'}}
+            {{'Last Name = '}}{{friend['last_name']}}  {{';'}}  
+            {{'Email = '}}{{friend['emails']}}
+            <a href="/{{friend['last_name']}}/edit_page"><button name="edit_button" value="EDIT"</button></a>
+            <button name="delete_button" value='DELETE'><a href="/{{friend['last_name']}}/delete_records"></a></button>
+        </li>
+        <!-- PROBABLY BETTER TO USE CONCAT WITH SEPERATE SYMBOLS-->
+    {% endfor %}
+    </ol>
+      <fieldset>
+        <legend>Add Friends Form</legend>
+            <form action="/add_record" method="POST">
+                <label for="">First Name: </label>
+                <input type="text" name="first_name">
+
+                <label for="">Last Name: </label>
+                <input type="text" name="last_name" value="">
+
+                <label for="">Email: </label>
+                <input type="text" name="emails">
+
+                <input type="submit" value="ADD FRIEND">
+            </form>
+    </fieldset>
+    <fieldset>
+        <legend>Friend Record to Edit</legend>
+             <form action="/{{ l_name }}/edit_page">
+                <label for="">Last Name of Friend to Edit</label>
+                <input type="text" name="for_edit">
+                <input type="submit" value="EDIT">
+            </form>
+    </fieldset>
+    <fieldset>
+            <legend>Friend Record to Delete</legend>
+                 <form action='/delete_records' method="POST">
+                    <label for="">Last Name of Friend Record to Delete</label>
+                    <input type="text" name="for_deletion">
+                    <input type="submit" value="DELETE RECORD">
+                </form>
+        </fieldset>
+    
+</body>
+</html>
+
+<!-- Must create table for user information and action buttons next to each other-->
