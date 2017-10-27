@@ -1,3 +1,9 @@
+.tables {
+    width:90%;
+    display: inline-block; 
+    margin: 10px;
+    border: green
+}
 table#2 {
     border: 5px solid red;
 }
