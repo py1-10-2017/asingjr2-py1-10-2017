@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Form Test</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.csss" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" type='text/css' href='form.css'>
+        <!-- added extra s in CSS LINK to  be able to see customer sytling-->
+</head>
+<body>
+    <div class="container">
+        <h1>Play From</h1>
+        <table id="1">
+            <thead>CATEGORES INCLUDE</thead>
+                <tr>
+                    <th>Name is</th>
+                    <th>Age is</th>
+                    <th>Sex is</th>
+                </tr>   
+            <tbody>
+                <tr>
+                    <td>Art</td>
+                    <td>40</td>
+                    <td>Male</td>
+                </tr>
+            </tbody>
+        </table><br><br><br>
+        <table id="2" class="border">
+            <caption class="border">Practice table</caption>
+            <thead class="thead">
+                <tr class="border">
+                    <th class="border">Name is</th>
+                    <th class="border">Age is</th>
+                    <th class="border">Sex is</th>
+                </tr>
+            </thead>   <!-- SUPERCEDES CAPTION-->
+            <tbody class="border">
+                <tr class="border">
+                    <td>Art</td>
+                    <td>40</td>
+                    <td>Male</td>
+                </tr>
+            </tbody>
+            <tfoot class="tfoot">
+                <td>Mike</td>
+                <td>38</td>
+                <td>Male</td>
+            </tfoot>
+        </table> <br> <br>
+        <table id="t01">
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th> 
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Eve</td>
+                <td>Jackson</td>
+                <td>94</td>
+            </tr>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>80</td>
+            </tr>
+        </table> <br>
+        <fieldset>
+        <legend>Play Form</legend>
+            <form action="">
+                <input type="text" name='name' placeholder="NAME SUCKA"><br>
+                <input type="radio" value="Mr">Mr <br>
+                <input type="radio" value="Mrs">Mrs<br>
+                <input type="radio" value="Miss">Miss <br>
+                <input type="text" name="color" placeholder="color"><br>
+                <select name="day" id="day"> <br>
+                    <option value="Mon">Mon</option>
+                    <option value="Tues">Tues</option>
+                    <option value="Weds">Weds</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+                <input type="checkbox" name="robot">Robot?
+                <button name='button'></button>
+                <input type="submit" name='send' value="SEND">
+            </form>
+        </fieldset>
+    <form action="" class="form-horizontal"> <!--Bootstrap function to expand box but removes legend and fieldset-->
+        <fieldset >
+            <legend>Play Form</legend>
+            <input type="text" name='name' class="form-control">
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>
