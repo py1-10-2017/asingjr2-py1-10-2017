@@ -1,0 +1,60 @@
+#header {
+    border-bottom: 5px black solid;
+    display:block;
+    margin-bottom:10px;
+}
+.headl {
+    align:left;
+    display: inline-block
+}
+.headr {
+    float:right;
+    display:inline-block;
+    margin: 0px 10px;
+}
+a {
+    float:right;
+    display:inline-block
+}
+#body {
+    display:block;
+    border:5px black dotted;
+    margin_top:10px;
+}
+.message_form {
+    width:70%;
+    height: auto;
+    border: 5px black dotted;
+    display:block;
+    padding:10px;
+}
+#form_content {
+    width:90%;
+    height:auto;
+    border: 2px red dotted;
+    padding:10px;
+    margin:10px;
+}
+#message_label {
+    align-:left;
+    display:block;
+    margin-left:10px
+}
+#mc_box {
+    width:90%;
+    height:90px;
+    border: 5px black solid;
+    margin: 10px auto;
+    padding:5px;
+    display:block;
+}
+#message_button {
+    border: 2px black solid;
+    background-color: rgb(189, 189, 236);
+    align:right;
+    color:white;
+    box-shadow: 5px 5px black;
+    display:block;
+    float:right;
+    margin-right:100px
+}

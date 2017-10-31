@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Activity Feed</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container-fluid">
+
+        <div id="body"> 
+            <div id="message_form">
+                <div id="form_content">
+            <form action="/store_comments_and_messages" method="POST">
+            <label id='message_label' for="">Post a message</label>
+            <input id='mc_box' type="text" name="message_content" value="">
+            <input type="hidden" name="post_message" value="message_post">
+            <input type="submit" value="Post a Message" id="message_button"> 
+            </form>
+                </div>
+                <div class="recent_messages">
+                    {{thingy}}
+                    {{thingy1}}
+                    {{thingy2}}
+                    {% for a in nq: %}
+                        <p>{{a['content']}}</p>
+                    {%endfor%}
+                  
+                </div>
+            </div>
+
+        </div>
+
+
+</body>
+</html>
