@@ -1,0 +1,67 @@
+<!--DOCTYPE html-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Activity Feed</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='messages.css')}}" type="text/css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div id="header"> <!-- line, border bottom or them break with hr-->
+            <h1 class="headl">CodingDojo Wall</h1> <!--FLOAT LEFT-->
+            <a class='headr' href="" >Log Off</a> <!-- Link to home page with flash maybe, float right-->
+            <h4 class="headr">Welcome {{session['first']}}</h4><!--User First Name float right-->
+        </div>
+        <div id="body"> <!--Showing messages-->
+            <div id="message_form">
+                <div id="form_content">
+            <form action="/store_comments_and_messages" method="POST">
+            <label id='message_label' for="">Post a message</label>
+            <input id='mc_box' type="text" name="message_content" value="">
+            <input type="hidden" name="post_message" value="message_post">
+            <input type="submit" value="Post a Message" id="message_button"> 
+            </form>
+                </div>
+                <div class="recent_messages">
+                    <!-- {% for thing in message_query: %}  -->
+                        <!-- {% if thing in message_query.keys() == 'content':%} -->
+                            <!-- <p>{{thing['content']}}</p> -->
+                        <!-- {% endif %} -->
+                    <!-- {% endfor %} -->
+                    {{thingy}}
+                    {{thingy1}}
+                    {{thingy2}}
+                    {% for thing in message_query: %}
+                        <h1>{{thing['content']}}</h1>
+                    {%endfor%}
+                    
+
+                    
+
+                </div>
+            </div>
+
+        </div>
+
+<!-- 
+    </div>
+    <h1>MESSAGES</h1>
+    <a href="/">
+    <button>HOME PAGE</button>
+    </a> -->
+
+</body>
+</html>
+
+<!--
+Need to create form at top with caption or title referencing the post option...
+need textarea
+need button to create query and submit form
+need div to display posted messages
+need for loop to with repeated form information or jquery to create new content dynamically on click....probably the best way.....
+-->
+
+<!-- Address form at top first.... -->
