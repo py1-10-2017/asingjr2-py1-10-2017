@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type='text/css' href="{% static 'time_app/css/style.css' %}">
+</head>
+<body>
+    <h1>TIME_DISPLAY PAGE</h1>
+    <div>
+        <h3>{{ now }}</h3>
+    </div>
+    <div>
+        <h1>{{ now.year }}</h1>
+        <h1>{{ now.month }}</h1>
+        <h1>{{ detail}}</h1>
+    </div>
+    {% load static %}
+    <img src="{% static 'time_app/images/gohan.jpg' %}" alt='angry gohan'>
+</body>
+</html>
