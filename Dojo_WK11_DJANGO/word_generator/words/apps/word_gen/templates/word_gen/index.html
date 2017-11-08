@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type='text/css' href="{% static 'word_gen/css/style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <h1>Random Word (attempt #: {{ request.session.counter}}</h1>
+            <h2></h2>
+            <h3>
+                <form>
+                   {% csrf_token %}
+                    <input type="text" name='random_string' value="{{ string1 }}">
+                    <input type="submit" value="GENERATE">
+                </form>
+<a href="https://www.youtube.com/watch?v=fHnPdIs3T_4">YOUTUBE></a>  <!--Directly inserted link into page -->
+<a href="/clear">CLEAR</a>  <!-- Added route to link to from page -->
+            </h3>
+        </div>
+    </body>
+    </div>
+</html>

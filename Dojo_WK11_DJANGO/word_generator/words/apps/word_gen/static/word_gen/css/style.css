@@ -1,0 +1,20 @@
+.wrapper{
+    outline: 2px black dotted
+}
+.main *{
+    padding:10px;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    color:red;
+   /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, rgb(233, 159, 75) , rgb(24, 228, 58));
+  background: -o-linear-gradient(right, rgb(233, 159, 75) , rgb(24, 228, 58)); 
+  background: -moz-linear-gradient(right, rgb(233, 159, 75) , rgb(24, 228, 58)); 
+  background: linear-gradient(to right, rgb(233, 159, 75) , rgb(24, 228, 58)); 
+  outline:black;
+  align-content: center;
+  text-align: center;
+  
+}    
