@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'survey/css/style.css' %}">
+</head>
+<body>FORM PAGE</h1>
+    <div>
+        <fieldset id='thing'>
+            <legend>FIRST ASSIGNMENT FORM</legend>
+            <form action="/survey/process"  method="POST">
+                {% csrf_token %}
+                NAME<input type="text" name='name' class="ran"><br>
+                LOCATION<input type="text" name="location" class="ran"><br>
+                FAV<input type="text" name='fav' class="ran".ran><br>
+                COMMENT<textarea name="comment" id="" cols="30" rows="10"></textarea><br>
+                <input type="submit" value="submit">
+            </form>
+        </fieldset>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Page</title>
+         {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'survey/css/style2.css' %}">
+
+</head>
+
+<body>
+    <h1>FORM RESULTS PAGE</h1>
+    <div id='small_text'>
+        <p>Thanks for submitting this form!
+            You have submitted this form {{ counter }} times now.
+        </p>
+    </div>
+    <fieldset disabled="enabled">
+        <p> Name:               {{ request.session.name }} </p>   <!--CAN ACCESS SESSION DIRECTLY OR THROUGH PREDEFINED VARIABLES-->
+        <p> Location:               {{ location }} </p>
+        <p> FAv:                {{ fav }} </p>
+        <p> Comment:                {{ comment }} </p>
+        <br><br><br>
+        <a href="/">Go BACK</a>
+    </fieldset>
+</body>
+
+</html>
