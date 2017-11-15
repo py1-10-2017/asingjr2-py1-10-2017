@@ -11,5 +11,11 @@
     
     <h1>BELOW IS CONTENT RENDERED FROM REQUEST.SESSION</h1>
     <h2> {{ color }}</h2>
+    <h1>ALL DOJOS</h1>
+    <h1>ALL NINJAS</h1>
+    {{ ninjas }}
+    {% for ninja in ninjas %}
+        <p>{% ninja %}</p>
+    {% endfor %}
 </body>
 </html>

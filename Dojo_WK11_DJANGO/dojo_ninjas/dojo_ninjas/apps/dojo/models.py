@@ -16,7 +16,9 @@ class Dojos(models.Model):
 class Ninjas(models.Model):
     first_name = models.CharField(max_length = 255)
     last_name = models.CharField(max_length = 255)
+    color = models.CharField(default='red', max_length=100)
+    day = models.CharField(max_length = 50)
     dojo = models.ForeignKey(Dojos, related_name="ninjas")
     print "Ninjas object/record succesfully created"
-    def __repr__(self):
+    def __str__(self):
         return "<Blog Info: First: {}, Last: {}>".format(self.first_name, self.last_name)
