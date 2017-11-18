@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>INDEX PAGE</h1>
+    <h2>Display of all user</h2>
+    <table>
+        <thead>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>EMAIL</th>
+            </th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <!-- Will not work without indent and "endfor" -->
+            <tr>
+                <td>{{ user.first }}</td>
+                <td>{{ user.last }}</td>
+                <td>{{ user.email }}</td>
+                <td><a href="{{ user.id }}/display"> SHOW</a></td>
+                <td><a href="{{ user.id }}/update"> UPDATE</a></td>
+                <td><a href="{{ user.id }}/delete"> DELETE</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </tfoot>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a href="/new"> CREATE NEW USER</a>
+</body>
+</html>

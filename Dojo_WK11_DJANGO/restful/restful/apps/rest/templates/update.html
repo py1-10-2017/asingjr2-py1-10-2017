@@ -1,0 +1,34 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>UPDATE USER FORM</h1>
+    <fieldset>
+        <legend>UPDATE</legend>
+        <form action="post_update" , method='POST'>
+            {% csrf_token %}
+            <!-- csrf token is absoltely necessary -->
+            First<input type="text" name="first" value="{{user.first}}" placeholder='first'><br>
+            <!-- Must place in {} -->
+            Last<input type="text" name="last" value='{{user.last}}' placeholder="last"><br>
+            <!-- Must place in {} -->
+            Email<input type="text" name="email" value="{{user.email}}" placeholder="email"><br>
+            <input type="submit" value="change">
+
+        </form>
+
+    </fieldset>
+</body>
+
+</html>
+
+<!--
+    Page is pretty straightforward
+    Must make sure to render information in {}
+-->

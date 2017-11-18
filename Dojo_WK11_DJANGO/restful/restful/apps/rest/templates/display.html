@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        DISPLAY SINGLE USER
+
+    </h1>
+    <table>
+        <thead>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>EMAIL</th>
+        </thead>
+        <tbody>
+            <!-- Will not work without indent and "endfor" -->
+            <tr>
+                <td>{{ user.first }}</td>
+                <td>{{ user.last }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+            </tr>
+        </tbody>
+        </tfoot>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="update">EDIT Profile</a>
+    <a href="delete">DELETE Profile</a>
+</body>
+
+</html>
