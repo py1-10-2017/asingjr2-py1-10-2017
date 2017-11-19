@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log_Reg</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+            crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{{static 'style.css' }}">
+</head>
+<body class="main">
+    <div class="register">
+        <fieldset>
+            <legend>Register</legend>
+            <form action='post_register'>  
+                <div class="form-group">
+                    <label for="">First Name</label>
+                    <input type="text" name='first'>
+                </div>
+                <div class="form-group">
+                    <label for="">Last Name</label>
+                    <input type="text" name='last'>
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name='password'>
+                </div>
+                <div class="form-group">
+                    <label for="">Confirm Password</label>
+                    <input type="password" name='confirm_password'>
+                </div>
+                   <input type="submit" name='' value="Register">
+                </div>
+
+            </form>
+        </fieldset>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="login">
+        <fieldset>
+            <legend>Login</legend>
+            <form action="post_login">
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="text" name="password">
+                </div>
+            <input type="submit" value=Login"">
+            </form>
+        </fieldset>
+    </div>
+</body>
+</html>

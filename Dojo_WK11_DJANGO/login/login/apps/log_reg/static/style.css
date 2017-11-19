@@ -1,0 +1,10 @@
+main{
+    margin: 20px;
+    outline-offset: 10px purple;
+    background: -webkit-radial-gradient(circle, brown, #A132A1); 
+    background: -o-radial-gradient(circle, brown, #A132A1);
+    background: -moz-radial-gradient(circle, brown, #A132A1);
+    background: radial-gradient(circle, brown, #A132A1);
+    color: black;
+    border:2px solid black;
+  }
