@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Book</title>
+
+</head>
+
+<body>
+    <h1>Add Book</h1>
+    <div class="top_add_book">
+        <a class='top_link' href="all_reviews">HOME</a>
+        <a class='top_link' href="logout">LOGOUT</a>
+    </div>
+    <div>
+        <form action="post" , method="POST">
+            {% csrf_token %}
+            <h2>Add a New Book Title and Review</h2>
+            <br> Book Title:
+            <input type="text" name="title">
+            <br>
+            <input type="hidden" name="hidden" value="add_book">
+            <ul>
+                <p>Author:</p>
+                <li>
+                    <select name="author_list" id="a_list">
+                        <br>
+                        <option value=""></option>
+                        <option value="Anne Rice">Anne Rice</option>
+                        <option value="Stephen King">Stephen King</option>
+                        <option value="J. K. Rowling">J.K Rowling</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="text" name='spec_author' placeholder="leave blank if choice above">
+                    <br>
+                </li>
+            </ul>
+            Review
+            <input type="text" name="review">
+            <br> Rating
+            <select name="rating" id="rating">
+                <br>
+                <option value=""></option>
+                <!-- trying with blank than n/a-->
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select> stars
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <input type="submit" value="Add Book and Review">
+        </form>
+    </div>
+</body>
+
+</html>
