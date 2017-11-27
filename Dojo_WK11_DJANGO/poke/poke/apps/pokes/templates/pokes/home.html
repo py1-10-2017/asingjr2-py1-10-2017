@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<h1>LOGGED USER {{ lu.name }} </h1>
+<div>
+    <fieldset disabled="enabled">
+        <legend>POKE ACTION</legend>
+
+    </fieldset>
+</div>
+<body>
+    <h1>HOME</h1>
+   {{ lu.pokes}} <br> <br>
+   {{ lu.total_pokes }}
+    <div>   
+            <legend>USER POKED COUNT</legend>
+            {% for user in au%}
+                {% if user.name != request.session.name %}
+                    <p> {{ user.name }}</p>
+                    <form action="/poke_post" method="POST"> 
+                        {% csrf_token %}
+                        <input type="hidden" name="user_to_poke" value="{{user.id}}">
+                        <input type="submit" value="POKE">
+                    </form>
+                {% endif %}
+            {% endfor %}
+</div>
+<div>
+    <fieldset disabled="enabled">
+        <legend> USERS POKES</legend>
+
+    </fieldset>
+</div>
+<div>
+    <fieldset disabled="enabled">
+        <legend>USER POKED COUNT</legend>
+         {{ pokes_set.count }}
+        {{ pokes_set }}
+        
+    </fieldset>
+</div>
+<div>
+    <fieldset disabled="enabled">
+        <legend>USER POKING COUNT</legend>
+          {{ poke_attempts.count }}
+          {{ poke_attempts }}
+    </fieldset>
+</div>
+<div>
+    <fieldset disabled="enabled">
+        <legend>PEOPLE POKED BY USER</legend>
+        
+    </fieldset>
+</div>
+
+<a href="/logout">LOGOUT</a>
+</body>
+</html>
