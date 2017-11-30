@@ -1,0 +1,73 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    {% if messages %} {% for message in messages %}
+    <p id={{ message.tags }}> {{ message }}</p>
+    {% endfor %} {% endif %}
+</body>
+<h1>index</h1>
+<div class="register">
+    <fieldset>
+        <legend>Register</legend>
+        <form action='/post' method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="register">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" name='name'>
+            </div>
+            <div class="form-group">
+                <label for="">Alias</label>
+                <input type="text" name='alias'>
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="text" name='email'>
+            </div>
+            <div class="form-group">
+                <label for="">Password</label>
+                <input type="text" name="password">
+            </div>
+            <div class="form-group">
+                <label for="">Confirm Password</label>
+                <input type="password" name='confirm_password'>
+            </div>
+            <div class="form-group">
+                <label for="">Date of Birth</label>
+                <input type="date" name='dob'>
+            </div>
+
+            <input type="submit" name='' value="Register">
+        </form>
+    </fieldset>
+</div>
+<br>
+<br>
+<br>
+<div class="login">
+    <fieldset>
+        <legend>Login</legend>
+        <form action="/post" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="login">
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="text" name="email">
+            </div>
+            <div class="form-group">
+                <label for="">Password</label>
+                <input type="text" name="password">
+            </div>
+            <input type="submit" value='Login'>
+        </form>
+    </fieldset>
+</div>
+
+</html>
