@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Question Below</h1>
+<h1>{{ question.question_text }}</h1>       <!-- from models-->
+<ul>
+    {% for choice in question.choices.all %}        
+    <!-- changed from choice_set.all to choices.all-->
+        <li>{{ choice.choice_text }}</li>
+    {% endfor %}
+</ul>
+<h2>Link to Index Page</h2>
+<p><a href=" {% url 'polls:vote' 1 %} ">Vote</a></p>
+<!-- Can use templating to make mass updates as projects grows
+    href=' url_input/vote'  same as 
+    href=' {% 'vote' url_inout
+-->
+<div id='form field'>
+    <fieldset>
+         {% if error_message %} <p><strong>{{ error_message }}</strong></p>{% endif %}
+        <!-- Can do in one line in HTML -->
+
+        <form action="qustion.id/vote" method="post">
+            <!-- "action didnt work...changed to original format" -->
+            {% csrf_token %} {% for choice in question.choices.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+            <br /> {% endfor %}
+            <input type="submit" value="Vote" />
+        </form>
+
+    </fieldset>
+</div> 
+</body>
+</html>
