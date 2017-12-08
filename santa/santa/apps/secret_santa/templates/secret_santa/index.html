@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Index Page</h1>
+    <form action="post" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form-type" value="register">
+    <label for="alias">Alias</label>
+    <input type="text" name="alias" >
+    <br>
+    <label for="email">Email</label>
+    <input type="text" name="email">
+    <br>
+    <label for="password">Password</label>
+    <input type="text" name="password">
+    <br>
+    <input type="submit" value="REGISTER">
+        </form>
+    <hr>
+    <hr>
+    <form action="post" method='POST'>
+        {% csrf_token %}
+        <input type="hidden" name="form-type" value="login">
+        EMAIL<input type="text" name="email">
+        <br>
+        PASSWORD<input type="text" name='password'>
+        <br>
+        <input type="submit" value="LOGIN">
+    </form>
+</body>
+<a href="/main">MAIN</a>
+<a href="/play">PLAY</a>
+</html>

@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bootstrap Experiment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'secret_santa/style.html' %}">
+</head>
+<body>
+    <h1>PLAY PAGE</h1>
+    <div class="container-fluid"> <!-- 100% of screen vs reg container which is centered-->
+        <div class="row">
+            <div class="col-sm red">
+                <p>This box is one of three</p>
+            </div>
+            <div class="col-sm red">
+                <p class="red">This box is one of three</p>
+            </div>
+            <div class="col-sm red">
+                <p>This box is one of three</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>this is a col which automatically justifies  </p>
+            </div>
+            <div class="col">
+                <p>this is a col which automatically justifies </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>This col is autosized</p>
+            </div>
+            <div class="col-10">
+                <p>This col is not, i.e 10</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ">
+                <p>This col is autosized</p> <!-- wraps like excel automatically increasing height of row when window is reduced
+            </div>
+                <div class="row">
+                    <div class="col">
+                        <p>This was inserted as(col) within a new row and fills space on same row as autosized one to left</p>
+                    </div>
+                </div>
+            <div class="col-6 order-first">
+                <p>This col is not, i.e 6, with an order preference of first</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-{breakpoint}-auto">
+                <p>this is based on width of all included content and extends automatically</p>
+            </div>
+            <div class="col-{breakpoint}-auto">
+                <p>///////so is this</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">col1</div>
+            <div class="col">col2</div>
+            <div class="w-100"> </div> <!-- full width of container...blank space-->
+            <div class="col">col4</div>
+            <div class="col">col5</div>
+        </div>
+    </div>
+</body>
+<a href="/main" class="red">MAIN</a>
+<a href="/play2">PLAY2</a>
+</html>

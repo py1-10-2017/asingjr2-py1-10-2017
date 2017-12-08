@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PLEASE ENTER MEMBERS FOR LIST NAMED {{ list_name }} </h1>
+    <fieldset>
+        <form action="enter_members" method="POST">
+            {% csrf_token %}
+            <label for="full_name">Full Name</label>
+            <input type="text" name="full_name">
+            <br>
+            <label for="email">Email</label>
+            <input type="text" name="email">
+            <br>
+            <input type="submit" name="ADD MEMBER">
+        </form>
+    </fieldset>
+    <div>
+        <div>
+            {% for name, email in current_members.iteritems %}
+                <p> Member Number {{ forloop.counter }}, {{ name }} , {{ email }}</p>
+            {% endfor%}
+        </div>
+    </div>
+</body>
+<a href="/main">MAIN</a>
+</html>

@@ -1,0 +1,7 @@
+.red {
+    background-color: rgb(223, 88, 88);
+    color:red
+}
+.row {
+    outline: 1px black solid
+}

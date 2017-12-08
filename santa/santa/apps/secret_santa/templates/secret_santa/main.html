@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>MAIN PAGE</h1>
+    <h1>Welcome {{ user.alias }} </h1>
+    <h2>WELCOME TO SECRET SANTA MAKER</h2>
+    <h4>All you need to start is a list of names and emails </h4>
+    <fieldset >
+        <legend> SECRET SANTA</legend>
+        <form action="post" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name='form-type' value="secret_santa">
+            <label for="name">NAME OF FORM</label>
+            <input type="text" name="list_name">
+            <br>
+            <label for="member_number">NUMBER OF MEMBERS</label>
+            <input type="number" name="initial_members">
+            <br>
+            <input type="submit" value="ENTER MEMBER INFO">
+        </form>
+    </fieldset>
+</body>
+<a href="/logout">Logout</a>
+</html>
