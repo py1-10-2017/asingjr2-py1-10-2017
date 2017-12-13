@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>SIMPLE FORM</h1>
+    <fieldset>
+        <form action='{% url "sim_form:post" %}' method="POST">
+            {% csrf_token %}
+            <p>
+                <b> Please</b> complete <em>my form</em>
+            </p> <br>
+            {{ form }} <br>
+            <label for="location">Dojo Location</label>
+            <select name="location" id="location">
+                <option value="New York">NY</option>
+                <option value="California">CA</option>
+                <option value="Spain">SPAIN</option><br>
+            </select><br>
+            <label for="languasge">Please Select Favorite Langauge</label> <br>
+            <input type="radio" name="language" value="Python">Python <br>
+            <input type="radio" name="language" value="C#">C# <br>
+            <input type="radio" name="language" value="Other">Other <br>
+            <h3>Comment</h3>
+            <textarea name="comment" id="" cols="30" rows="10" placeholder="Please Write Your Comments"></textarea>
+            <input type="submit" value="Save Results">
+        </form>
+
+    </fieldset>
+</body>
+</html>

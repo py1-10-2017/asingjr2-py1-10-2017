@@ -1,0 +1,28 @@
+.left {
+    color:green;
+    float: left;
+    display: block
+}
+.right {
+    color: orange;
+    float:right;
+    display: block;
+}
+.t_left {
+    color:green;
+    float: left;
+    display: block;
+    width: 30%;
+    margin-right:20px
+}
+.t_right {
+    color: orange;
+    float:right;
+    display: block;
+    width: 30%;
+    margin-right:20px
+}
+.main {
+    width: 50%;
+    outline: 10px black dotted
+}

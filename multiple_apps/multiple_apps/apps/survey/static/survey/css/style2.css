@@ -1,0 +1,5 @@
+#small_text{
+    background-color:rgb(155, 223, 155);
+    border: 5px black solid;
+    outline-offset: 10px 20px rgb(102, 226, 102);
+}

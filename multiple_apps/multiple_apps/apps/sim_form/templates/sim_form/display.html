@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'sim_form/style.css' %}">
+</head>
+<body>
+    <h1>DISPLAY FORM DATA</h1>
+    <div class="main">
+        <div class="t_left">
+            <fieldset >
+                <p class="left">Name</p>
+                <p class="left">Dojo</p>  
+                <p class="left">Language</p> 
+                <p class="left">Comment</p> 
+            </fieldset>
+        </div>
+        <div class="t_right">
+            <fieldset >
+                <h2 class="right"> {{ name }} </h2> 
+                <h2 class="right"> {{ location }} </h2> 
+                <h2 class="right"> {{ language }} </h2> 
+                <h2 class="right"> {{ comment }} </h2> 
+            </fieldset>
+        </div>
+        <a href='{% url "sim_form:index" %}' style="display:block; color:red; font-weight:4em">Go Back</a>
+    </div>
+</body>
+</html>
