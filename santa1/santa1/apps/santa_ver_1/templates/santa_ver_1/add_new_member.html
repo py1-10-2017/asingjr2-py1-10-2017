@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Adding Members</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </script> {% load static %}
+    <link rel="stylesheet" type="text/css" href=" {% static 'secret_santa/enter_members.css'%} "> {% load static %}
+    <link rel="stylesheet" type="text/css" href=" {% static 'santa_ver_1/style_log_reg.css'%} ">
+</head>
+<body>
+    <div class="container tree hextend">
+        <div class="row">
+            <img class='col-sm-2' src="{% static 'santa_ver_1/santa_hat_list.jpg' %}" alt="list picture">
+            <div class="col-sm-8">
+                <div class="jumbotron red out">
+                    <h4 class="alert green out">LIST NAME {{ list_name }}</h4>
+                    <div class="panel-body">
+                        <form class="form-inline" action="{% url 'santa_ver_1:add_member' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="form-type" value="add-members"> 
+                            {% if messages%} {% for message in messages %}
+                            <p id={{ message.error }}> {{ message }}</p>
+                            {% endfor %} {% endif %}
+                            <div class="form-group">
+                                <label for="full_name">Full Name:</label>
+                                <input type="text" name="full_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="text" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">Telephone Number:</label>
+                                <input type="number" name="telephone" value="1234567890" style='margin-right:10px'>
+                            </div>
+                            <input type="submit" value="ADD MEMBER">
+                        </form>
+                    </div>
+                    <a href="{% url 'santa_ver_1:main' %}">
+                        <button class="btn green black"> Main </button>
+                    </a>
+                </div>
+            </div>
+            <img class='col-sm-2' src="{% static 'santa_ver_1/santa_hat_list.jpg' %}" alt="list picture">
+        </div>
+        <div class="row">
+        </div>
+</html>

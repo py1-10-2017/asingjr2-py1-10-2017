@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">.
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> {% load static %}
+    <link rel="stylesheet" type="text/css" href=" {% static 'santa_ver_1/style_log_reg.css'%} ">
+</head>
+
+<body>
+    <div class="container main out tree hextend">
+
+        <div class="row">
+            <div class="col-sm-1"> </div>
+            <div class="col-sm-10">
+                <div class="out green">
+                    <h1 class=" center white">WELCOME TO SECRET SANTA LIST MAKER</h1>
+                    <h1 class=" center white">Time Until Christmas: {{ xmas |timeuntil }}</h1>
+                </div>
+            </div>
+            <div class="col-sm-1"> </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5 ">
+                <div class="jumbotron red out">
+                    <h3 white>
+                        <a class= 'white' href="{% url 'santa_ver_1:reg' %}">REGISTER</a></h3>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4 ">
+                <div class="jumbotron red out">
+                    <h3 class="center white">
+                        <a class= 'white' href="{% url 'santa_ver_1:log' %}">LOGIN</a>
+                        </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

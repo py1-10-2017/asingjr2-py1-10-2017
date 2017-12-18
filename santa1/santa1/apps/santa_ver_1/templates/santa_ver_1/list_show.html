@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <title>List Show</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href=" {% static 'santa_ver_1/style_log_reg.css'%} ">
+</head>
+<body>
+    <div class="container main out tree hextend">
+        <div class="col-sm-2"></div>
+        <div class='col-sm-8'>
+            <div class="jumbotron red">
+                <h3> List: {{ list.name }}</h3>
+                <form action="{% url 'santa_ver_1:post' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="form-type" value="list-update">
+                    <div class="form-group">
+                        <label for="name">LIST NAME</label>
+                        <input class="form-control" type="text" name="list_name" value="{{ list.name }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="gift_max">Gift Max Price</label>
+                        <input class="form-control" type="number" name="gift_max" value="{{ list.gift_max }}">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn green"> SUBMIT UPDATES</button>
+                        <a href="{% url 'santa_ver_1:main' %}">
+                            <button class="btn green black"> Back </button>
+                        </a>
+                    </div>
+                </div>
+                </form>
+        <div class="col-sm-2"></div>
+
+
+        </div>
+
+    </div>
+    <h1>
+        LIST SHOW PAGE
+    </h1>
+    {{ list }}
+    {{ list.name }}
+    {{ list.member_set.all.count }}
+</body>
+</html>
