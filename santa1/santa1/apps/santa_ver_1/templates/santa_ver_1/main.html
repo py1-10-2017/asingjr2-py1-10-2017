@@ -14,12 +14,19 @@
 <body>
     <div class="container main out tree hextend ">
         <div class="row">
-            <div class="col-sm-9">
+            <div class='col-sm-1'></div>
+            <div class="col-sm-5">
                 <h1 class="  green il out">Welcome {{ user.alias }} </h1>
             </div>
             <div class='col-sm-3'>
                 <h4 class="green out il rpadding ">Lists Built <span class="label label-default">{{ user.list_set.all.count}}</span>
                 </h4>
+            </div>
+            <div class='col-sm-1'></div>
+            <div class='col-sm-2'>
+                <a href="{% url 'santa_ver_1:main' %}">
+                    <button class="btn green black f16"> Main </button>
+                </a>
             </div>
         </div>
         <div class="row">
@@ -33,11 +40,11 @@
                         <p id={{ message.error }}> {{ message }}</p>
                         {% endfor %} {% endif %}
                         <div class="form-group">
-                            <label for="name">LIST NAME</label>
+                            <label  class="f16" for="name">LIST NAME </label>
                             <input class="form-control" type="text" name="list_name" placeholder="List Name">
                         </div>
                         <div class="form-group">
-                            <label for="gift_max">Gift Max Price</label>
+                            <label class="f16"  for="gift_max">Gift Max Price</label>
                             <input class="form-control" type="number" name="gift_max"  value="40">
                         </div>
                         <h4>Members require name, number, and email</h4>
@@ -51,30 +58,36 @@
         <div class="row">
             <div class="col-sm-1"> </div>
             <div class='col-sm-10'>
-                <table class="table table-hover green out">
+                <table class="table table-hover table-bordered green out">
                 <thead class="white">
                     <tr>
-                        <th> <p>Number</p></th>
-                        <th>List Name</th>
-                        <th>Gift Max</th>
-                        <th>Total Members</th>
-                        <th>Options</th>
+                        <th class="f16"> <p>#</p></th>
+                        <th class="f16">List Name</th>
+                        <th class="f16">Gift Max</th>
+                        <th class="f16">Total Members</th>
+                        <th class="f16">Options (Secret Santa Requires Generator 3 or more)</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for list in user_lists %}
                 <tr>
-                    <td> {{ list.id }} </td>
-                    <td> {{ list.name }}</td>
-                    <td> {{ list.gift_max}} Dollars</td>
-                    <td> {{ list.member_set.all.count }}</td>
+                    <td class="f16"> {{ forloop.counter }} </td>
+                    <td class="f16"> {{ list.name }}</td>
+                    <td class="f16"> {{ list.gift_max}} Dollars</td>
+                    <td class="f16">  {{ list.member_set.all.count }}</td>
                     <td>
-                        <a href="/{{list.id }}/list_update">Update </a>
-                        <a href="/{{list.id }}/list_delete">Delete </a>
+                        <a class="f16" href="/{{list.id }}/list_update">Update </a> |
+                        <a class="f16" href="/{{list.id }}/list_delete"> Delete</a> |
+                        <a class="f16" href="/{{list.id }}/add_member"> Add Member </a> |
                         {% if list.member_set.all.count > 0%}
-                        <a href="/{{list.id }}/view_members">View Members </a>
+                        <a class="f16" href="/{{list.id }}/view_members">
+                            View Member</a>
                         {% endif %}
-                        <a href="/{{list.id }}/add_member">Add Members </a>
+                        {% if list.member_set.all.count > 2 %}
+                        <a href="/{{list.id }}/ss_list">
+                            <button class="btn btn-primary">Secret Santa </button>
+                             </a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

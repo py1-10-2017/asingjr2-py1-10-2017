@@ -4,6 +4,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from .models import BaseModel, Profile, List, Member
 from django.contrib import messages
 from .models import *
+from random import shuffle
 import bcrypt
 import datetime
 import re
@@ -43,7 +44,7 @@ def log(request):
     return render(request, 'santa_ver_1/log.html',context) 
 
 def list_update(request, list_id):
-    if request.POST != 'POST':
+    if request.method != 'POST':
         request.session['list_for_update_id'] = list_id
         request.session.modified = True
         try:
@@ -137,19 +138,21 @@ def post(request):
             return redirect('/log')
     if request.POST['form-type'] == 'list':
         print 'trying to create list'
-        request.session['list_name'] = request.POST['list_name']
+        print request.POST
         try:
             lists = List.objects.all()
             for thing in lists:
                 if thing.name == request.POST['list_name']:
                     messages.warning(request, 'List name already in use')
                     return redirect('/main')
-            if request.POST['gift_max'] > 1000:
+            if len(request.POST['list_name']) <1:
+                messages.warning(request, 'List name cannot be blank')
+            if int(request.POST['gift_max']) > 1000:
                 messages.warning(request, 'Gift max cannot exceed 1000 dollars')
                 return redirect('/main')
             List.objects.create(
             creator = Profile.objects.get(id = request.session['user_id']),
-            name = request.POST['list_name'], 
+            name = str(request.POST['list_name']).upper(), 
             gift_max = request.POST['gift_max']
             )
             print 'list created'
@@ -183,8 +186,7 @@ def post(request):
         # def add_member():
         try:
             Member.objects.create(
-                member_list=List.objects.get(
-                    name=request.session['list_name']),
+                member_list=List.objects.last(),
                     full_name=request.POST['full_name'],
                     email=request.POST['email'],
                     telephone=request.POST['telephone']
@@ -223,11 +225,22 @@ def post(request):
                 return redirect('/main')
         else:
             return redirect('/main')
+    if request.POST['form-type'] == 'add-member':
+        print 'post add member'
+        try:
+            Member.objects.create(
+                member_list= List.objects.get(id=request.session['temp_id']), full_name=request.POST['full_name'],
+                email=request.POST['email'],
+                telephone=request.POST['telephone']
+            )
+            print 'member added'
+            return redirect('/main')
+        except:
+            print'no one added'
+            return redirect('/main')
 
 def main(request):
     print 'main view'
-    # if 'member_info' in request.session:
-    #     request.session['member_info'] = {}
     user = Profile.objects.get(id=request.session['user_id'])
     user_lists = user.list_set.all()
     if user_lists.count() == 0:
@@ -247,44 +260,87 @@ def main(request):
 def enter_members(request):
     print 'enter members view'
     list1 = List.objects.last()
-    if 'member_info' in request.session:
-        print 'member info exists'
-        context = {
+    context = {
         'list_name': list1.name,
+        'member_count': list1.member_set.all().count(),
         'current_members': list1.member_set.all(),
-        'len': len(list1.member_set.all())
-        }
-        return render(request, 'santa_ver_1/enter_members.html', context)
-    else:
-        print 'no member info'
-        context = {
-            'list_name': request.session['list_name']
-            }
-        return render(request, 'santa_ver_1/enter_members.html', context)
-        
-def add_member(request, ml_id):
-    print 'add member view'
-    list1 = List.objects.get(id=ml_id)
-    if request.method != 'POST':
-        context = {
-            'list':list1,
-            'list_name': list1.name,
-            'current_members': list1.member_set.all(),
-            'len': len(list1.member_set.all())
-        }
-        return render(request, 'santa_ver_1/add_new_member.html', context)
-    if request.method == 'POST':
+    }
+    return render(request, 'santa_ver_1/enter_members.html', context)
+    # if 'member_info' in request.session:
+    #     # print 'member info exists'
+    #     # context = {
+    #     # 'list_name': list1.name,
+    #     # 'len': len(list1.member_set.all())
+    #     # }
+    #     # return render(request, 'santa_ver_1/enter_members.html', context)
+    #     pass
+    # else:
+    #     print 'no member info'
+    #     context = {
+    #         'list_name': request.session['list_name'],
+    #         'current_members': list1.member_set.all(),  
+    #         }
+    #     return render(request, 'santa_ver_1/enter_members.html', context)
+
+def add_member(request, list_id):
+    print 'awesome'
+    request.session['temp_id'] = list_id
+    list1 = List.objects.get(id=list_id)
+    return render(request, 'santa_ver_1/add_new_member.html', )
+    if request.POST != 'POST':
         try:
-            list1.member_set.all.add(
-                member_list = list1, full_name = request.POST['full_name'], 
+            context = {
+                'list':list1,
+            }
+        except:
+            print 'nothing tried'
+            return redirect('/main')
+    if request.method == 'POST':
+        print 'trying to add member'
+        try:
+            print 'member added'
+            Member.objects.create(
+                member_list = List.objects.get(id=request.session['temp_id']),
+                full_name = request.POST['full_name'], 
                 email = request.POST['email'], 
                 telephone = request.POST['telephone']
             )
-            print 'member added'
             return redirect('/main')
         except:
             print'no one added'
             return redirect('/main')
+
+def ss_list(request, list_id):
+    print 'ss_list view'
+    list1 = List.objects.get(id=list_id)
+    list_mem = List.objects.get(id=list_id).member_set.all()
+    request.session['ss_list_members'] = []
+    for mem in list_mem:
+        request.session['ss_list_members'].append(mem.full_name)
+    
+    def secret_santa(member_list):
+        new_list = member_list[:]
+        print 'new list current', new_list
+        shuffle(new_list)
+        print 'new list jum', new_list
+
+        results = {}
+        for i, person in enumerate(new_list):
+            try:
+                results[person] = new_list[i+1]
+            except IndexError:
+                results[person] = new_list[0]
+        print results
+        return results
+
+    request.session['ss_list_jumbled'] = secret_santa(request.session['ss_list_members'])
+    context = {
+        'list':list1,
+        'ss_mem': request.session['ss_list_members'],
+        'ss_mem_jum': request.session['ss_list_jumbled']
+    }
+    return render(request, 'santa_ver_1/ss_list.html', context)
+
 
 def logout(request):
     print 'logout view'

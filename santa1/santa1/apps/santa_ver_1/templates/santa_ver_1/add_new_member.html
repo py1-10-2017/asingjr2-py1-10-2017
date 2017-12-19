@@ -17,11 +17,11 @@
             <img class='col-sm-2' src="{% static 'santa_ver_1/santa_hat_list.jpg' %}" alt="list picture">
             <div class="col-sm-8">
                 <div class="jumbotron red out">
-                    <h4 class="alert green out">LIST NAME {{ list_name }}</h4>
+                    <h4 class="alert green out">LIST NAME {{ list.name }}</h4>
                     <div class="panel-body">
-                        <form class="form-inline" action="{% url 'santa_ver_1:add_member' %}" method="POST">
+                        <form class="form-inline" action="{% url 'santa_ver_1:post' %}" method="POST">
                             {% csrf_token %}
-                            <input type="hidden" name="form-type" value="add-members"> 
+                            <input type="hidden" name="form-type" value="add-member"> 
                             {% if messages%} {% for message in messages %}
                             <p id={{ message.error }}> {{ message }}</p>
                             {% endfor %} {% endif %}

@@ -17,7 +17,7 @@
 <body>
     <div class="container tree hextend">
         <div class="row">
-            <img class='col-sm-2' src="{% static 'santa_ver_1/santa_hat_list.jpg' %}" alt="list picture">
+            <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 <div class="jumbotron red out">
                     <h4 class="alert green out">LIST NAME {{ list_name }}</h4>
@@ -47,12 +47,44 @@
                         <button class="btn green black"> Main </button>
                     </a>
                 </div>
-
-            </div>
-            <img class='col-sm-2' src="{% static 'santa_ver_1/santa_hat_list.jpg' %}" alt="list picture">
-        </div>
-<div class="row">
 </div>
+        </div>
+        <div class="row">
+{% if member_count > 0 %}
+<div class="row">
+    <div class="col-sm-2"> </div>
+    <div class='col-sm-8 jumbotron red out'>
+        <table class="table table-hover green out">
+            <thead class="white">
+                <tr>
+                    <th>Entry</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Telephone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in current_members %}
+                <tr>
+                    <td> {{ member.full_name }} </td>
+                    <td> {{ member.email }}</td>
+                    <td> {{ member.telephone }}</td>
+                    <td>
+                        <a href="/{{list.id }}/list_update">Update </a>
+                        <a href="/{{list.id }}/list_delete">Delete </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'santa_ver_1:main' %}">
+            <button class="btn green black"> Main </button>
+        </a>
+    </div>
+    <div class="col-sm-2"> </div>
+</div>
+{% endif %}
+        </div>
 <!--
 <div class="row">
     

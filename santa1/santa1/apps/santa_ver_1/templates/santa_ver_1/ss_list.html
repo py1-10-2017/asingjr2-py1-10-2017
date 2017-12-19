@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Adding Members</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </script> {% load static %}
+        <link rel="stylesheet" type="text/css" href=" {% static 'secret_santa/enter_members.css'%} ">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href=" {% static 'santa_ver_1/style_log_reg.css'%} ">
+</head>
+<body>
+    <div class="container main tree out">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9 green out ">
+                <h1> SECRET SANTA GENERATOR FOR  {{ list.name }} </h1>
+            </div>
+            <div class="col-sm-2">
+                <a href="{% url 'santa_ver_1:main' %}">
+                    <button class="btn green black f16"> Main </button>
+                </a>
+            </div>
+
+<div class="row">
+    <div class="col-sm-1"> </div>
+    <div class='col-sm-5'>
+        <table class="table table-hover table-bordered green out">
+            <thead class="f16">
+                <tr>
+                    <th class="f16 green">#</th>
+                    <th class="f16 green">Members</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name in request.session.ss_list_members %}
+                <tr>
+                    <td class="f16"> {{ forloop.counter }} </td>
+                    <td class="f16"> {{ name.upper }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        <div class='col-sm-5'>
+            <table class="table table-hover table-bordered green out">
+                <thead class="f16">
+                    <tr>
+                        <th class="f16">#</th>
+                        <th class="f16">Santa</th>
+                        <th class="f16">Member</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for santa, member in request.session.ss_list_jumbled.iteritems %}
+                    <tr>
+                        <td class="f16"> {{ forloop.counter }} </td>
+                        <td class="f16"> {{ santa.upper }}</td>
+                        <td class="f16"> {{ member.upper }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <div class="col-sm-1"> </div>
+</div>
+
+</body>
+</html>
