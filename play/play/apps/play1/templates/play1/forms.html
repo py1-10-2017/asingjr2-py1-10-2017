@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>FORM 1</h1>
+            <form action="{% url 'play1:test' %}" method='POST'>
+                    {% csrf_token %}
+                {{ form1.as_p }}
+                <input type="submit" value="send stuff">
+            </form>
+        </div>
+        <div class="row">
+            <h1>FORM 2</h1>
+            <form>
+                {% csrf_token %} 
+                {{ form2.as_ul }}
+                <input type="submit" value="send stuff" class="btn">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

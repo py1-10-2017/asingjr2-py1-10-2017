@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PARAM</h1>
+    <h1>THE PARAM IN URL IS ............. {{ param }}</h1>
+    <hr>
+    <br><br><br>
+    <h2>trying get object or 404..if param matches a profile the object is called</h2>
+    <ol>
+        <li>{{ profile_number }}</li>
+        <li> {{ profile_number.name }}</li>
+        <li> {{ profile_number.email }} </li>
+        <li> {{ profile_number.age }}</li>
+    </ol>
+
+
+    <h3>
+        <a href=" {% url 'play1:index' %}">Index</a>
+    </h3>
+</body>
+</html>
