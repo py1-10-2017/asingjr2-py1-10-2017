@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <title>TemplateView Test </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% load static %}
+    <script type="text/javascript" src="play/jquery.js"></script>
+</head>
+<body>
+    <h1>THIS IS A GENERIC VIEW TO TEST TEMPLATEVIEW</h1>
+    <div>
+        <p>Trying to render generic form</p>
+        <form action='/generic'
+        method="post">
+            {% csrf_token %}
+            <input type="hidden" name='form_type' value="generic">
+            {{ form.as_ul }}
+            <input type="submit" value="HERO SEND">
+        </form>
+    </div>
+    <h2>TEXT FROM LAST POST</h2>
+    <p> {{ text }}</p>
+    <br>
+    <hr>
+    <div>
+        <form action='/generic' method="post">
+            {% csrf_token %} 
+            <input type="hidden"  name='form_type' value="color">
+            {{ form1.as_ul }}
+            <input type="submit" value="HERO SEND">
+        </form>
+    </div>
+    <br>
+    <br><hr>
+    <div>
+        <form action='/generic' method="post">
+            <input type="hidden" name='form_type' value="profile">
+            {% csrf_token %} {{ form2.as_ul }}
+            <input type="submit" value="HERO SEND">
+        </form>
+    </div>
+    <br>
+    <br>
+    <hr>
+    {% if messages %}
+    {% for message in messages%}
+    <p> {{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    <div>
+        <form action='/generic' method="post">
+            <input type="hidden" name='form_type' value="profile"> {% csrf_token %} 
+            {{ form3.as_ul }}
+            <input type="submit" value="HERO SEND">
+        </form>
+    </div>
+    <a href=" {% url 'play1:index' %}">Index Page </a>
+</body>
+</html>

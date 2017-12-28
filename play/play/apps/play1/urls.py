@@ -1,5 +1,7 @@
 from django.conf.urls import url
+from views import generic
 from . import views
+
 
 # app_name = 'play1' 
 urlpatterns = [
@@ -9,5 +11,7 @@ urlpatterns = [
     url(r'^post$', views.post, name= 'post'), 
     #note the change in url param format
     url(r'^(?P<param>\d+)$', views.param_test, name='param_test'),
+    url(r'^generic$', generic.as_view(), name='generic'),
     url(r'^logout$', views.logout, name= 'logout'), 
 ]
+ 

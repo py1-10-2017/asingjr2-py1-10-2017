@@ -3,7 +3,8 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.exceptions import ValidationError 
 from django.core.validators import EmailValidator, MaxValueValidator, MinValueValidator, MaxLengthValidator, MinLengthValidator
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput
+
 
 
 class BaseModel(models.Model):
@@ -37,6 +38,8 @@ class Color(BaseModel):
     def __unicode__(self):
         return 'name is {}, family is {}'.format(self.name, self.family)
 
+class Post(BaseModel):
+    post = models.CharField(max_length=100, unique=True)
 
 #***************************************************************************************
 #If you choose to use MODEL FORM foreign key and many to many must be choices from query set!!!
@@ -50,3 +53,16 @@ class ColorForm(ModelForm):
     class Meta:
         model = Color
         fields = '__all__'
+ 
+class Sport(BaseModel):
+    name = models.CharField(max_length=200, 
+    validators = [MinLengthValidator(6, message='Need more characters my friend')])
+    players = models.IntegerField(default = 5)
+
+class SportForm(ModelForm):
+    class Meta:
+        model = Sport
+        fields = '__all__'
+        widgets = {
+            'name': TextInput(attrs = {'placeholder':'awesome', 'id':'green' })
+        }

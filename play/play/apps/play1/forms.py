@@ -14,3 +14,9 @@ class PlayForm(forms.Form):
     play4 = forms.TimeField(label='Time Widget', widget=forms.TimeInput)
     play5 = forms.CharField(label='Checkbox try', widget = forms.CheckboxInput) 
 
+#Creating to gest with Generic Class View
+class GenericForm(forms.Form):
+    hero = forms.CharField(max_length=6,
+    min_length=3,
+    label='max is 6 and min is 3',
+    widget=forms.TextInput(attrs={ 'placeholder':'overawatch'}))
