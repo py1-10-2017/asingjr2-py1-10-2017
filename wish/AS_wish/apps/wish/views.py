@@ -8,6 +8,8 @@ from django.contrib import messages
 
 def index(request):
     print 'index view'
+    if 'user_id' in request.session:
+        print 'session is live'
     form =RegisterForm()
     context ={
         'form':form
@@ -32,7 +34,7 @@ def post(request):
             print 'clean dict', form.cleaned_data
             if request.POST['confirm_pw'] != request.POST['password']:
                 messages.warning(
-                    request, 'Password does not match anything in records')
+                    request, 'Password does not match Confirm Password')
             safe_pw = bcrypt.hashpw(
                 form.cleaned_data['password'].encode(), bcrypt.gensalt())
             Profile.objects.create(
@@ -65,6 +67,7 @@ def post(request):
                 request.session['name'] = try_user.name
                 request.session['username'] = try_user.username
                 request.session['user_id'] = try_user.id
+                request.session['rem'] = []
                 return redirect('/main')
             if not bcrypt.checkpw(request.POST['password'].encode(), try_user.password.encode()):
                 messages.warning(
@@ -89,10 +92,7 @@ def post(request):
                 print 'item created'
                 item = Item.objects.last()
                 item = item.shoppers.add(user)
-                # item = item.shoppers.add(user)
-                # item.save()
-                print 'shopper added'
-                return redirect('/new')
+                return redirect('/main')
             else:
                 print 'something happened'
                 return redirect('/new')
@@ -101,7 +101,20 @@ def post(request):
 
 def main(request):
     print 'main view'
-    return render(request, 'wish/main.html')
+    print 'rem = ', request.session['rem']
+    user = Profile.objects.get(id = request.session['user_id'])
+    wish_list = Item.objects.filter(shoppers__id= user.id).exclude(id__in=request.session['rem'])
+    nums = []
+    for thing in wish_list:
+        nums.append(thing.id) 
+    print nums
+    all_items = Item.objects.all().exclude(id__in=nums)
+    context = {
+        'user':user,
+        'wish_list': wish_list,
+        'all_items':all_items
+    }
+    return render(request, 'wish/main.html', context)
 
 def new(request):
     print 'new view'
@@ -116,9 +129,30 @@ def new(request):
     }
     return render(request, 'wish/new.html', context)
 
-def item(request):
+def add_to_wish(request, item_id):
+    print 'add to wish view'
+    user = Profile.objects.get(id=request.session['user_id'])
+    item = Item.objects.get(id=item_id)
+    item = item.shoppers.add(user)
+    return redirect('/main')
+
+def del_from_wish(request, item_id):
+    print 'add to wish view'
+    item = Item.objects.get(id=item_id)
+    item.delete()
+    return redirect('/main')
+
+def rem_from_wish(request, item_id):
+    print 'rem from wish view'
+    request.session['rem'].append(item_id)
+    request.session.modified = True
+    print request.session['rem']
+    return redirect('/main')
+
+def item(request, item_id):
     print 'item view'
-    return HttpResponse('item')
+    item = Item.objects.get(id=item_id)
+    return render(request, 'wish/item.html', {'item':item})
 
 def logout(request):
     print 'logout view'

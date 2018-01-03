@@ -26,20 +26,6 @@
             <input type="submit" value="ADD">
         </form>
     </div>
-    <div>
-{% if profiles %}
-{% for profile in profiles %}
-<p>{{ profile.username }}</p>
-{% endfor %}
-{% endif %}
-    </div>
-    <div>
-{% if items %} 
-{% for item in items %}
-<p>{{ item.name }}</p>
-<p> {{ item.shoppers.all.first }}</p>
-{% endfor %} 
-{% endif %}
-    </div>
+  
 </body>
 </html>
