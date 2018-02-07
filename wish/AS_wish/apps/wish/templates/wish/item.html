@@ -3,25 +3,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Index Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 </head>
 <body>
-    <p>
-        <a href=" {% url 'wish:main' %}">HOME</a>
-    </p>
-    <p>
-        <a href=" {% url 'wish:logout' %}">LOGOUT</a>
-    </p>
-    <h1>ITEM IS {{ item.name }} </h1>
-    <div>
-        <h1>User who added this item/product </h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9"></div>
+            <div class="col-sm-3">
+                <p>
+                    <a href=" {% url 'wish:main' %}">HOME</a>
+                </p>
+                <p>
+                    <a href=" {% url 'wish:logout' %}">LOGOUT</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <h3>ITEM IS {{ item.name }} </h3>
+            <br>
+            <hr>
+        </div>
+        <h5>User who added this item/product </h5>
+        {% if item.shoppers.count > 0 %}
+        {% for person in item.shoppers.all %}
+        <ul>
+            <li> {{ person.name }} </li>
+        </ul>
+        {% endfor %}
+        {% endif %}
     </div>
-    {% if item.shoppers.count > 0 %}
-    {% for person in item.shoppers.all %}
-    <ul>
-        <li> {{ person.name }} </li>
-    </ul>
-    {% endfor %}
-    {% endif %}
 </body>
 </html>

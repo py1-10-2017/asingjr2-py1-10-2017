@@ -68,6 +68,7 @@ def post(request):
                 request.session['username'] = try_user.username
                 request.session['user_id'] = try_user.id
                 request.session['rem'] = []
+                print 'login successful'
                 return redirect('/main')
             if not bcrypt.checkpw(request.POST['password'].encode(), try_user.password.encode()):
                 messages.warning(
