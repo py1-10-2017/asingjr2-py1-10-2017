@@ -22,7 +22,7 @@ prompt-toolkit==1.0.15
 pycparser==2.18
 PyDictionary==1.5.2
 pydotplus==2.0.2
-Pygments==2.2.0
+Pygments==2.7.4
 pyparsing==2.2.0
 pytz==2017.3
 regex==2017.11.9
